@@ -1,14 +1,14 @@
 import asyncio
 
-from GanmaDownloader.client import Ganma
+import GanmaDownloader
 
 
 async def main() -> None:
-    client = Ganma()
+    client = GanmaDownloader.Ganma()
     await client.create_account()
-    magazine = await client.get_magazine_data("yamadalv999")
-    for story in magazine.items:
-        print(story)
+    magazine_alias = "yamadalv999"
+    magazine = await client.get_magazine_data(magazine_alias)
+    await client.get_magazine_story_reader(magazine_alias, "279dabe0-3322-11e9-994b-06e4e79605e7")
 
 
 if __name__ == "__main__":

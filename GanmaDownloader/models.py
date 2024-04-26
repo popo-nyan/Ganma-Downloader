@@ -1,64 +1,74 @@
-from pydantic import BaseModel as PydanticBaseModel
-from typing import Optional, List
+from dataclasses import dataclass
 
 
-class CreateAccountResponseBase(PydanticBaseModel):
-    id: str
+@dataclass(slots=True)
+class CreateAccountResponseModel:
+    user_id: str
     password: str
 
 
-class AnnounceTransitionBase(PydanticBaseModel):
-    destinationURL: Optional[str] = None
-    way: Optional[str] = None
+@dataclass(slots=True)
+class AnnounceTransitionBaseModel:
+    destinationURL: str | None = None
+    way: str | None = None
 
 
-class AnnounceCementBase(PydanticBaseModel):
-    test: Optional[str] = None
+@dataclass(slots=True)
+class AnnounceCementBaseModel:
+    test: str | None = None
 
 
-class AuthorBase(PydanticBaseModel):
-    link: Optional[dict] = None
+@dataclass(slots=True)
+class AuthorBaseModel:
     name: str
-    profileImageURL: Optional[str]
-    profileText: Optional[str]
+    profile_image_url: str | None
+    profile_text: str | None
+    author_link: dict | None = None
 
 
-class MagazineItemBase(PydanticBaseModel):
-    disableCM: bool = None
-    hasExchange: bool = None
-    heartCount: int = None
+@dataclass(slots=True)
+class MagazineItemBaseModel:
+    disable_cm: bool | None = None
+    has_exchange: bool = None
+    heart_count: int = None
     kind: str = None
     number: int = None
-    releaseStart: int = None
-    seriesTitle: str = None
-    storyId: str = None
-    subtitle: str = None
-    thumbnailImageURL: str = None
+    release_start: int = None
+    series_title: str = None
+    story_id: str = None
+    subtitle: str | None = None
+    thumbnail_image_url: str = None
     title: str = None
 
 
-class MagazineModel(PydanticBaseModel):
+@dataclass(slots=True)
+class MagazineResponseModel:
     alias: str
-    author: AuthorBase
-    bookmarkCount: int
-    canAcceptFanLetter: bool
-    canSupport: bool
+    author: AuthorBaseModel
+    bookmark_count: int
+    can_accept_fan_letter: bool
+    can_support: bool
     description: str
-    distributionLabel: str
-    firstViewAdvertisements: Optional[List[dict]] = None
-    footerAdvertisements: Optional[List[dict]] = None
-    heartCount: int
-    highlightImageURLs: Optional[List[str]] = None
+    distribution_label: str
+    heart_count: int
     id: str
-    isGTOON: bool
-    isSeriesBind: bool
-    items: List[MagazineItemBase]
-    overview: Optional[str]
-    publicLatestStoryNumber: int
-    recommendations: Optional[list] = None
-    rectangleWithLogoImageURL: str
-    relatedLink: Optional[dict] = None
-    storyReleaseStatus: Optional[str]
-    tags: Optional[List[dict]] = None
+    is_gtoon: bool
+    is_series_bind: bool
+    items: list[MagazineItemBaseModel]
+    overview: str | None
+    public_latest_story_number: int
+    rectangle_with_logo_image_url: str
+    story_release_status: str | None
     title: str
-    upcoming: Optional[dict] = None
+    upcoming: dict | None = None
+    first_view_advertisements: list[dict] | None = None
+    footer_advertisements: list[dict] | None = None
+    highlight_image_urls: list[str] | None = None
+    recommendations: list | None = None
+    related_link: list | None = None
+    tags: list[dict] | None = None
+
+
+@dataclass(slots=True)
+class MagazineStoryReaderResponseModel:
+    magazine_id: str
