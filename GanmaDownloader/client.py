@@ -1,9 +1,10 @@
 import uuid
 import httpx
+import pprint
 from json import dumps
 
-from .models import CreateAccountResponseBase, MagazineModel, MagazineItemBase
-
+from .models import CreateAccountResponseModel, MagazineResponseModel, MagazineItemBaseModel
+from .utils import make_directory
 
 class Ganma:
 
@@ -14,8 +15,9 @@ class Ganma:
             'X-From': 'https://reader.ganma.jp/api/',
             'X-Noescape': 'true',
             'Connection': 'close'})
+        self._play_session = ""
 
-    async def create_account(self) -> CreateAccountResponseBase | None:
+    async def create_account(self) -> CreateAccountResponseModel | None:
         create_account_response = await self.__session.post(url="https://reader.ganma.jp/api/1.0/account")
         if create_account_response.status_code == httpx.codes.OK:
             params = {'clientType': 'app',
@@ -27,39 +29,50 @@ class Ganma:
                                                        params=params,
                                                        data=data)
             if login_response.status_code == httpx.codes.OK and login_response.json()['success']:
-                return CreateAccountResponseBase(user_id=data['id'],
-                                                 password=data['password'])
+                self._play_session = login_response.cookies.get("PLAY_SESSION")
+                return CreateAccountResponseModel(user_id=data['id'],
+                                                  password=data['password'])
         return None
 
     async def get_magazine_data(self,
                                 magazine_alias: str
-                                ) -> MagazineModel | None:
+                                ) -> MagazineResponseModel | None:
         response = await self.__session.get(url=f"https://reader.ganma.jp/api/3.2/magazines/{magazine_alias}")
         if response.status_code == httpx.codes.OK:
             response_json = response.json()['root']
-            return MagazineModel(alias=response_json['alias'], author=response_json['author'],
-                                 bookmarkCount=response_json['bookmarkCount'],
-                                 canAcceptFanLetter=response_json['canAcceptFanLetter'],
-                                 canSupport=response_json['canSupport'], description=response_json['description'],
-                                 distributionLabel=response_json['distributionLabel'],
-                                 firstViewAdvertisements=response_json['firstViewAdvertisements'],
-                                 footerAdvertisements=response_json['footerAdvertisements'],
-                                 heartCount=response_json['heartCount'],
-                                 highlightImageURLs=response_json['highlightImageURLs'], id=response_json['id'],
-                                 isGTOON=response_json['isGTOON'], isSeriesBind=response_json['isSeriesBind'],
-                                 items=[MagazineItemBase(storyId=item['storyId'], title=item['title'],
-                                                         seriesTitle=item['seriesTitle'],
-                                                         thumbnailImageURL=item['thumbnailImageURL'], kind=item['kind'],
-                                                         releaseStart=item['releaseStart'],
-                                                         heartCount=item['heartCount'], disableCM=item['disableCM'],
-                                                         hasExchange=item['hasExchange'])
-                                        for item in response_json['items']], overview=response_json['overview'],
-                                 publicLatestStoryNumber=response_json['publicLatestStoryNumber'],
-                                 recommendations=response_json['recommendations'],
-                                 rectangleWithLogoImageURL=response_json['rectangleWithLogoImageURL'],
-                                 relatedLink=response_json['relatedLink'],
-                                 storyReleaseStatus=response_json['storyReleaseStatus'], tags=response_json['tags'],
-                                 title=response_json['title'], upcoming=response_json['upcoming'])
+            return MagazineResponseModel(alias=response_json['alias'],
+                                         author=response_json['author'],
+                                         bookmark_count=response_json['bookmarkCount'],
+                                         can_accept_fan_letter=response_json['canAcceptFanLetter'],
+                                         can_support=response_json['canSupport'],
+                                         description=response_json['description'],
+                                         distribution_label=response_json['distributionLabel'],
+                                         first_view_advertisements=response_json['firstViewAdvertisements'],
+                                         footer_advertisements=response_json['footerAdvertisements'],
+                                         heart_count=response_json['heartCount'],
+                                         highlight_image_urls=response_json['highlightImageURLs'],
+                                         id=response_json['id'],
+                                         is_gtoon=response_json['isGTOON'],
+                                         is_series_bind=response_json['isSeriesBind'],
+                                         items=[MagazineItemBaseModel(story_id=item['storyId'],
+                                                                      title=item['title'],
+                                                                      series_title=item['seriesTitle'],
+                                                                      thumbnail_image_url=item['thumbnailImageURL'],
+                                                                      kind=item['kind'],
+                                                                      release_start=item['releaseStart'],
+                                                                      heart_count=item['heartCount'],
+                                                                      disable_cm=item['disableCM'],
+                                                                      has_exchange=item['hasExchange'])
+                                                for item in response_json['items']],
+                                         overview=response_json['overview'],
+                                         public_latest_story_number=response_json['publicLatestStoryNumber'],
+                                         recommendations=response_json['recommendations'],
+                                         rectangle_with_logo_image_url=response_json['rectangleWithLogoImageURL'],
+                                         related_link=response_json['relatedLink'],
+                                         story_release_status=response_json['storyReleaseStatus'],
+                                         tags=response_json['tags'],
+                                         title=response_json['title'],
+                                         upcoming=response_json['upcoming'])
         else:
             return None
 
@@ -67,12 +80,19 @@ class Ganma:
                                         magazine_alias: str,
                                         story_id: str):
         response = await self.__session.get(url="https://ganma.jp/api/graphql",
-                                            params={
-                                                'operationName': 'MagazineStoryReaderQuery',
-                                                'variables': dumps(
-                                                    {'magazineIdOrAlias': magazine_alias, 'storyId': story_id,
-                                                     'publicKey': None}),
-                                                'extensions': dumps({'persistedQuery': {'version': 1,
-                                                                                        'sha256Hash': '60dae270d44f863e2f485a7fffe83abb5a1d6e3c4fea394e048524ca81c64ca8'}})})
+                                            headers={'Host': 'ganma.jp',
+                                                     'X-Apollo-Operation-Id': '60dae270d44f863e2f485a7fffe83abb5a1d6e3c4fea394e048524ca81c64ca8',
+                                                     'X-Apollo-Operation-Name': 'MagazineStoryReaderQuery',
+                                                     'Accept': 'multipart/mixed; deferSpec=20220824, application/json',
+                                                     'User-Agent': 'GanmaReader/9.0.0 Android releaseVersion:12 model:samsung/SC-51D',
+                                                     'X-From': 'https://reader.ganma.jp/api/',
+                                                     'X-Noescape': 'true'},
+                                            params={'operationName': 'MagazineStoryReaderQuery',
+                                                    'variables': dumps({'magazineIdOrAlias': magazine_alias,
+                                                                        'storyId': story_id,
+                                                                        'publicKey': None}),
+                                                    'extensions': dumps({'persistedQuery': {'version': 1,
+                                                                                            'sha256Hash': '60dae270d44f863e2f485a7fffe83abb5a1d6e3c4fea394e048524ca81c64ca8'}})})
+        print(response.url)
         if response.status_code == httpx.codes.OK:
-            response_json = response.json()['root']
+            pprint.pprint(response.json())
