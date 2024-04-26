@@ -1,30 +1,34 @@
-from pydantic import BaseModel as PydanticBaseModel
-from typing import Optional, List
+from dataclasses import dataclass
 
 
-class CreateAccountResponseBase(PydanticBaseModel):
-    id: str
+@dataclass(slots=True)
+class CreateAccountResponseBase:
+    user_id: str
     password: str
 
 
-class AnnounceTransitionBase(PydanticBaseModel):
-    destinationURL: Optional[str] = None
-    way: Optional[str] = None
+@dataclass(slots=True)
+class AnnounceTransitionBase:
+    destinationURL: str | None = None
+    way: str | None = None
 
 
-class AnnounceCementBase(PydanticBaseModel):
-    test: Optional[str] = None
+@dataclass(slots=True)
+class AnnounceCementBase:
+    test: str | None = None
 
 
-class AuthorBase(PydanticBaseModel):
-    link: Optional[dict] = None
+@dataclass(slots=True)
+class AuthorBase:
     name: str
-    profileImageURL: Optional[str]
-    profileText: Optional[str]
+    profileImageURL: str | None
+    profileText: str | None
+    author_link: dict | None = None
 
 
-class MagazineItemBase(PydanticBaseModel):
-    disableCM: bool = None
+@dataclass(slots=True)
+class MagazineItemBase:
+    disableCM: bool | None = None
     hasExchange: bool = None
     heartCount: int = None
     kind: str = None
@@ -32,12 +36,13 @@ class MagazineItemBase(PydanticBaseModel):
     releaseStart: int = None
     seriesTitle: str = None
     storyId: str = None
-    subtitle: str = None
+    subtitle: str | None = None
     thumbnailImageURL: str = None
     title: str = None
 
 
-class MagazineModel(PydanticBaseModel):
+@dataclass(slots=True)
+class MagazineModel:
     alias: str
     author: AuthorBase
     bookmarkCount: int
@@ -45,20 +50,20 @@ class MagazineModel(PydanticBaseModel):
     canSupport: bool
     description: str
     distributionLabel: str
-    firstViewAdvertisements: Optional[List[dict]] = None
-    footerAdvertisements: Optional[List[dict]] = None
     heartCount: int
-    highlightImageURLs: Optional[List[str]] = None
     id: str
     isGTOON: bool
     isSeriesBind: bool
-    items: List[MagazineItemBase]
-    overview: Optional[str]
+    items: list[MagazineItemBase]
+    overview: str | None
     publicLatestStoryNumber: int
-    recommendations: Optional[list] = None
     rectangleWithLogoImageURL: str
-    relatedLink: Optional[dict] = None
-    storyReleaseStatus: Optional[str]
-    tags: Optional[List[dict]] = None
+    storyReleaseStatus: str | None
     title: str
-    upcoming: Optional[dict] = None
+    upcoming: dict | None = None
+    firstViewAdvertisements: list[dict] | None = None
+    footerAdvertisements: list[dict] | None = None
+    highlightImageURLs: list[str] | None = None
+    recommendations: list | None = None
+    relatedLink: list | None = None
+    tags: list[dict] | None = None
