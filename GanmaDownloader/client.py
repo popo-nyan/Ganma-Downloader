@@ -1,5 +1,6 @@
 import uuid
 import httpx
+from string import punctuation
 from json import dumps
 import aiofiles
 
@@ -11,24 +12,23 @@ from .utils import make_directory
 class Client:
 
     def __init__(self):
-        self.__session = httpx.AsyncClient(http2=True, headers={
-            'Host': 'reader.ganma.jp',
-            'User-Agent': 'GanmaReader/9.0.0 Android releaseVersion:12 model:samsung/SC-51D',
-            'X-From': 'https://reader.ganma.jp/api/',
-            'X-Noescape': 'true',
-            'Connection': 'close'})
+        self.__session = httpx.AsyncClient(http2=True,
+                                           headers={'Host': 'reader.ganma.jp',
+                                                    'User-Agent': 'GanmaReader/9.0.0 Android releaseVersion:12 model:samsung/SC-51D',
+                                                    'X-From': 'https://reader.ganma.jp/api/',
+                                                    'X-Noescape': 'true',
+                                                    'Connection': 'close'})
         self._play_session = ""
 
     async def create_account(self) -> CreateAccountResponseModel | None:
         create_account_response = await self.__session.post(url="https://reader.ganma.jp/api/1.0/account")
         if create_account_response.status_code == httpx.codes.OK:
-            params = {'clientType': 'app',
-                      'installationId': str(uuid.uuid4()),
-                      'explicit': 'false'}
             data = {"id": create_account_response.json()['root']['id'],
                     "password": create_account_response.json()['root']['password']}
             login_response = await self.__session.post(url="https://reader.ganma.jp/api/3.0/session",
-                                                       params=params,
+                                                       params={'clientType': 'app',
+                                                               'installationId': str(uuid.uuid4()),
+                                                               'explicit': 'false'},
                                                        data=data)
             if login_response.status_code == httpx.codes.OK and login_response.json()['success']:
                 self._play_session = login_response.cookies.get("PLAY_SESSION")
@@ -44,28 +44,17 @@ class Client:
             response_json = response.json()['root']
             stories = []
             for story in response_json['items']:
-                if story.get("subtitle") is not None:
-                    stories.append(MagazineItemBaseModel(storyId=story['storyId'],
-                                                         title=story['title'],
-                                                         seriesTitle=story['seriesTitle'],
-                                                         subtitle=story['subtitle'],
-                                                         thumbnailImageUrl=story['thumbnailImageURL'],
-                                                         kind=story['kind'],
-                                                         releaseStart=story['releaseStart'],
-                                                         heartCount=story['heartCount'],
-                                                         disableCm=story['disableCM'],
-                                                         hasExchange=story['hasExchange']))
+                if story.get("subtitle") is None:
                     continue
-                else:
-                    stories.append(MagazineItemBaseModel(storyId=story['storyId'],
-                                                         title=story['title'],
-                                                         seriesTitle=story['seriesTitle'],
-                                                         thumbnailImageUrl=story['thumbnailImageURL'],
-                                                         kind=story['kind'],
-                                                         releaseStart=story['releaseStart'],
-                                                         heartCount=story['heartCount'],
-                                                         disableCm=story['disableCM'],
-                                                         hasExchange=story['hasExchange']))
+                stories.append(MagazineItemBaseModel(storyId=story['storyId'],
+                                                     title=story['title'],
+                                                     seriesTitle=story['seriesTitle'],
+                                                     subtitle=story['subtitle'],
+                                                     thumbnailImageUrl=story['thumbnailImageURL'],
+                                                     kind=story['kind'],
+                                                     releaseStart=story['releaseStart'],
+                                                     heartCount=story['heartCount'],
+                                                     disableCm=story['disableCM']))
 
             return MagazineResponseModel(alias=response_json['alias'],
                                          author=response_json['author'],
@@ -149,14 +138,15 @@ class Client:
                                    alias: str,
                                    title: str,
                                    subtitle: str):
-        make_directory(alias.strip("\\?()!@#$%^&*()_+{}?>!"))
-        save_image_path = alias.strip("\\?()!@#$%^&*()_+{}?>!") + r"\\" + title.strip("\\?()!@#$%^&*()_+{}?>!") + "-" + subtitle.strip("\\?()!@#$%^&*()_+{}?>!")
+        save_image_path = (alias.strip(r"\\" + punctuation) + r"\\" +
+                           title.strip(r"\\" + punctuation) + "-" +
+                           subtitle.strip(r"\\" + punctuation))
+        make_directory(alias.strip(r"\\" + punctuation))
         make_directory(save_image_path)
         response = await self.__session.get(url=base_url + str(page_count) + ".jpg?" + image_sign,
                                             headers={'Host': 'd1bzi54d5ruxfk.cloudfront.net',
                                                      'Accept-Encoding': 'gzip, deflate, br',
-                                                     'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9; SM-G973N Build/PPR1.190810.011)',
-                                                     'User-Agent': 'GanmaReader/9.2.0 Android releaseVersion:9 model:samsung/SM-G973N'})
+                                                     'User-Agent': 'GanmaReader/9.0.0 Android releaseVersion:12 model:samsung/SC-51D'})
         if response.status_code == httpx.codes.OK:
             async with aiofiles.open(save_image_path + r"\\" + str(page_count) + ".jpg", "wb") as f:
                 await f.write(response.content)
