@@ -149,9 +149,8 @@ class Client:
                                    alias: str,
                                    title: str,
                                    subtitle: str):
-        make_directory(alias)
-        save_image_path = alias.replace(r"\/", "") + r"\\" + title.replace(r"\/", "") + "-" + subtitle.replace(r"\/",
-                                                                                                               "")
+        make_directory(alias.strip("\\?()!@#$%^&*()_+{}?>!"))
+        save_image_path = alias.strip("\\?()!@#$%^&*()_+{}?>!") + r"\\" + title.strip("\\?()!@#$%^&*()_+{}?>!") + "-" + subtitle.strip("\\?()!@#$%^&*()_+{}?>!")
         make_directory(save_image_path)
         response = await self.__session.get(url=base_url + str(page_count) + ".jpg?" + image_sign,
                                             headers={'Host': 'd1bzi54d5ruxfk.cloudfront.net',
