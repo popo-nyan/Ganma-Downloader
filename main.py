@@ -22,9 +22,9 @@ async def main() -> None:
                                                   alias=magazine_alias,
                                                   title=magazine_data.story_contents.story_info.title,
                                                   subtitle=magazine_data.story_contents.story_info.subtitle)
-                # await asyncio.sleep(1)
-            # print(f"[INFO] Waiting to avoid overloading the server")
-            # await asyncio.sleep(5)
+                await asyncio.sleep(1)
+            print(f"[INFO] Waiting to avoid overloading the server")
+            await asyncio.sleep(5)
     else:
         print(f"[ERROR] {magazine_alias} does not exist.")
 
