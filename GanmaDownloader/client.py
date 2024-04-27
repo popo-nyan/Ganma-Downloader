@@ -3,10 +3,11 @@ import httpx
 import pprint
 from json import dumps
 
-from .models import CreateAccountResponseModel, MagazineResponseModel, MagazineItemBaseModel
-from .utils import make_directory
+from .models import CreateAccountResponseModel, MagazineResponseModel, MagazineItemBaseModel, \
+    MagazineStoryReaderResponseModel, StoryContentBaseModel
 
-class Ganma:
+
+class Client:
 
     def __init__(self):
         self.__session = httpx.AsyncClient(http2=True, headers={
@@ -40,6 +41,31 @@ class Ganma:
         response = await self.__session.get(url=f"https://reader.ganma.jp/api/3.2/magazines/{magazine_alias}")
         if response.status_code == httpx.codes.OK:
             response_json = response.json()['root']
+            stories = []
+            for story in response_json['items']:
+                if story.get("subtitle") is not None:
+                    stories.append(MagazineItemBaseModel(storyId=story['storyId'],
+                                                         title=story['title'],
+                                                         seriesTitle=story['seriesTitle'],
+                                                         subtitle=story['subtitle'],
+                                                         thumbnailImageUrl=story['thumbnailImageURL'],
+                                                         kind=story['kind'],
+                                                         releaseStart=story['releaseStart'],
+                                                         heartCount=story['heartCount'],
+                                                         disableCm=story['disableCM'],
+                                                         hasExchange=story['hasExchange']))
+                    continue
+                else:
+                    stories.append(MagazineItemBaseModel(storyId=story['storyId'],
+                                                         title=story['title'],
+                                                         seriesTitle=story['seriesTitle'],
+                                                         thumbnailImageUrl=story['thumbnailImageURL'],
+                                                         kind=story['kind'],
+                                                         releaseStart=story['releaseStart'],
+                                                         heartCount=story['heartCount'],
+                                                         disableCm=story['disableCM'],
+                                                         hasExchange=story['hasExchange']))
+
             return MagazineResponseModel(alias=response_json['alias'],
                                          author=response_json['author'],
                                          bookmark_count=response_json['bookmarkCount'],
@@ -54,16 +80,7 @@ class Ganma:
                                          id=response_json['id'],
                                          is_gtoon=response_json['isGTOON'],
                                          is_series_bind=response_json['isSeriesBind'],
-                                         items=[MagazineItemBaseModel(story_id=item['storyId'],
-                                                                      title=item['title'],
-                                                                      series_title=item['seriesTitle'],
-                                                                      thumbnail_image_url=item['thumbnailImageURL'],
-                                                                      kind=item['kind'],
-                                                                      release_start=item['releaseStart'],
-                                                                      heart_count=item['heartCount'],
-                                                                      disable_cm=item['disableCM'],
-                                                                      has_exchange=item['hasExchange'])
-                                                for item in response_json['items']],
+                                         stories=stories,
                                          overview=response_json['overview'],
                                          public_latest_story_number=response_json['publicLatestStoryNumber'],
                                          recommendations=response_json['recommendations'],
@@ -73,6 +90,7 @@ class Ganma:
                                          tags=response_json['tags'],
                                          title=response_json['title'],
                                          upcoming=response_json['upcoming'])
+
         else:
             return None
 
@@ -93,6 +111,19 @@ class Ganma:
                                                                         'publicKey': None}),
                                                     'extensions': dumps({'persistedQuery': {'version': 1,
                                                                                             'sha256Hash': '60dae270d44f863e2f485a7fffe83abb5a1d6e3c4fea394e048524ca81c64ca8'}})})
-        print(response.url)
-        if response.status_code == httpx.codes.OK:
-            pprint.pprint(response.json())
+        if response.status_code == httpx.codes.OK and response.json().get("data") is not None:
+            response_json = response.json()['data']
+            return MagazineStoryReaderResponseModel(magazine_id=response_json['magazine']['magazineId'],
+                                                    story_contents=StoryContentBaseModel(
+                                                        story_info=response_json['magazine']['storyContents'][
+                                                            'storyInfo'],
+                                                        page_images=response_json['magazine']['storyContents'][
+                                                            'pageImages']))
+
+    async def download_story_image(self,
+                                   base_url: str,
+                                   image_sign: str,
+                                   page_count: int):
+        response = await self.__session.get(url=base_url + str(page_count) + "/" + image_sign)
+        print(response.content)
+        print(response)

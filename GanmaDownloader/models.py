@@ -28,16 +28,16 @@ class AuthorBaseModel:
 
 @dataclass(slots=True)
 class MagazineItemBaseModel:
-    disable_cm: bool | None = None
-    has_exchange: bool = None
-    heart_count: int = None
+    disableCm: bool | None = None
+    hasExchange: bool = None
+    heartCount: int = None
     kind: str = None
     number: int = None
-    release_start: int = None
-    series_title: str = None
-    story_id: str = None
+    releaseStart: int = None
+    seriesTitle: str = None
+    storyId: str = None
     subtitle: str | None = None
-    thumbnail_image_url: str = None
+    thumbnailImageUrl: str = None
     title: str = None
 
 
@@ -54,7 +54,7 @@ class MagazineResponseModel:
     id: str
     is_gtoon: bool
     is_series_bind: bool
-    items: list[MagazineItemBaseModel]
+    stories: list[MagazineItemBaseModel]
     overview: str | None
     public_latest_story_number: int
     rectangle_with_logo_image_url: str
@@ -70,5 +70,36 @@ class MagazineResponseModel:
 
 
 @dataclass(slots=True)
+class MagazineBaseModel:
+    magazine_id: str
+    title: str
+    alias: str
+    overview: str
+    authr: AuthorBaseModel | None = None
+
+
+@dataclass(slots=True)
+class StoryInfoBaseModel:
+    story_id: str
+    title: str
+    subtitle: str | None = None
+
+
+@dataclass(slots=True)
+class PageImageBaseModel:
+    secret_key: str | None = None
+    page_image_base_url: str | None = None
+    page_image_sign: str | None = None
+    page_count: int | None = None
+
+
+@dataclass(slots=True)
+class StoryContentBaseModel:
+    story_info: StoryInfoBaseModel | None = None
+    page_images: PageImageBaseModel | None = None
+
+
+@dataclass(slots=True)
 class MagazineStoryReaderResponseModel:
     magazine_id: str
+    story_contents: StoryContentBaseModel | None = None

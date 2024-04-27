@@ -1,0 +1,106 @@
+{
+  "data": {
+    "magazine": {
+      "magazineId": "eceb4210-35be-11e9-994b-06e4e79605e7",
+      "title": "山田くんとLv999の恋をする",
+      "alias": "yamadalv999",
+      "overview": "プロゲーマー男子高校生×恋多き残念女子 ネトゲで出逢って恋をします！",
+      "author": {
+        "penName": "ましろ",
+        "profileImageURL": "https://d1bzi54d5ruxfk.cloudfront.net/author/1ccdd370-331d-11e9-994b-06e4e79605e7_1550453574000.jpg?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vZDFiemk1NGQ1cnV4ZmsuY2xvdWRmcm9udC5uZXQvYXV0aG9yLzFjY2RkMzcwLTMzMWQtMTFlOS05OTRiLTA2ZTRlNzk2MDVlN18xNTUwNDUzNTc0MDAwLmpwZyoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3MTQ0MTU1NDd9LCJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn19fV19&Signature=cva8Eh2hRGL5eaa851N~gz6n-fh5yyJO~Vmo2wrGk9OewenYON5tzZseBNe6yHD9Ps8rvHQVbJ-vXrIxOHPjxbuBwgWUgLxGTPf0AHGa-zr4ELIFmnKcIA2VlPiwBIhl2kvMWu2lWdvEy~MWrtGMEISK1ykQFeujkPFIYuQXddylSvkcSRZ1uZYFZOpUZ2zLoW44D2JD-cvj82NNtPhqmhq7wZHP2FRk67mWweGAuAP9qyLPGgIqHvO4PywZX-kIrqnaa-fyYRvs9FU6uvjEKShidqwpJpvWnZBmCcQsKcqt-HsaqQgr3Fp4v3~rq5lWFrdFKMY1-6KoHnFP7sqQQQ__&Key-Pair-Id=K3U7ERFV8HLPNG"
+      },
+      "authorName": "ましろ",
+      "rectangleWithLogoImageURL": "https://d1bzi54d5ruxfk.cloudfront.net/images_rectangle_with_logo/e490d9e0-bab1-11ee-9286-3a537d790e77.jpg?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vZDFiemk1NGQ1cnV4ZmsuY2xvdWRmcm9udC5uZXQvaW1hZ2VzX3JlY3RhbmdsZV93aXRoX2xvZ28vZTQ5MGQ5ZTAtYmFiMS0xMWVlLTkyODYtM2E1MzdkNzkwZTc3LmpwZyoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3MTQ0MTcxMjd9LCJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn19fV19&Signature=qPvzwTsL8lVr89OHWxWvuKJibPuOm1IFbEAFwW~LonI0kzwrM5W1M9Fjm6UcdAN6IVxihvWIvOi~kKzhQih~3BJy8S1odbIQsifhbrAT~7WmmDhEOju9rQB0q0W8CW~pyLWDlLphM5Ina8I7T3G6SG8O3bwSqfN5OPoAuzAHuyxNOoK19uyVdx6oSk3LLUE1Ac~hMxFKJfee8-Vj15GkzmShls5~etox-tFA9Bt~lFjMxUsyQJU71~OwOJLVbG9KGYwr5ymfKPKT4Jtg1HZYxcCsFFwB6IW6XSVCBDC~-ElVJDxx-QuiKdw7yaDq2IbYGb1J3fRdhQXx8ZK6TvJ1CQ__&Key-Pair-Id=K3U7ERFV8HLPNG",
+      "squareImageURL": "https://d1bzi54d5ruxfk.cloudfront.net/images_square/072cc170-bab3-11ee-9286-3a537d790e77.jpg?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vZDFiemk1NGQ1cnV4ZmsuY2xvdWRmcm9udC5uZXQvaW1hZ2VzX3NxdWFyZS8wNzJjYzE3MC1iYWIzLTExZWUtOTI4Ni0zYTUzN2Q3OTBlNzcuanBnKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcxNDQxNzAzOX0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=gIDN0HGUJ2-R2SjyVFEEG1su6qOk~mbwdQ0egHsWb-mjrrbOaSx~z8Uw3zdGYSN8rlSneVOnaLsS60h2fDNEi5dR1Z5O7kMJyCBO7lzlYO0UUMoHIgtrZIUbRc90XUwNSWYDnNabqb5UzRiCeFJe3Wxlrco7Yn7MUCbL-V1CSbxlV3k~qQS5NyHZ5QakSIGqg4XwPPHEqaI2Ib-i-aWeucu3QE39z1R9MmZnfhJP7jEp0xKQiL2Mqu471pdY8TEXvinrMMz1-~o~XnYrSdABTQPnFLITYAKgkM6PI3lndwoGsQl3PRT8XyWge3b9xkwLCASBq6osyjj6ewUU6DcDPg__&Key-Pair-Id=K3U7ERFV8HLPNG",
+      "isSellByStoryMagazine": false,
+      "shareText": "#山田くんとLv999の恋をする #山田999",
+      "canSupport": true,
+      "upcoming": {
+        "title": "【今週分休載のお知らせ】",
+        "subtitle": null,
+        "releaseAt": 1714575600000
+      },
+      "storyContents": {
+        "__typename": "StoryContents",
+        "storyInfo": {
+          "storyId": "279dabe0-3322-11e9-994b-06e4e79605e7",
+          "title": "第1話",
+          "subtitle": "これだからっ！ゲームする男なんて！！",
+          "appealMessage": null,
+          "isVerticalOnly": false,
+          "contentsAccessCondition": {
+            "__typename": "FreeStoryContentsAccessCondition",
+            "disableCM": true
+          },
+          "nextStoryInfo": {
+            "__typename": "StoryInfo",
+            "storyId": "f0c691f0-38a7-11e9-994b-06e4e79605e7",
+            "title": "第2話",
+            "subtitle": "山田ってなんか冷たくない？",
+            "appealMessage": null,
+            "isPurchased": false,
+            "storyThumbnailURLs": [
+              "https://d1bzi54d5ruxfk.cloudfront.net/story_f0c691f0-38a7-11e9-994b-06e4e79605e7_pages_1655968552000/1.jpg?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vZDFiemk1NGQ1cnV4ZmsuY2xvdWRmcm9udC5uZXQvc3RvcnlfZjBjNjkxZjAtMzhhNy0xMWU5LTk5NGItMDZlNGU3OTYwNWU3X3BhZ2VzXzE2NTU5Njg1NTIwMDAvMS5qcGcqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzE0NDEzODMxfSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=TDy6qp6q7H7ldLgFwAM9yPqpfw-vrolJ9MRYmrbhwNofEMVJIJ~32AkweFHxfcNu4HC59nLc8fFWGMyHc8VbMcWs0RfL85IEVKZOkZF03-8SOyKUUW3Al7XxnuQhhJWUOpxsE5ntPBI32BDqCkwBbPZ0Lx1fjdxWEJfoK~xG7kO8YgkZ4BNpRYNA7I7hs0c9qLRR-ymhraesEUiwh3W29ya1Lolwfawcfj08aHVLxE9yeiO5y16YBkfFtMnlRPOSOKchYpS-agFMVqsYFwjdyi1CEFo9tUXijZ7Y-6~73is1xJVfmFrvHW7WRSVmjXW6TaWNehyQwD~~6Gbx9Skp3w__&Key-Pair-Id=K3U7ERFV8HLPNG&trimWidth=360&left=96&top=141"
+            ],
+            "contentsAccessCondition": {
+              "__typename": "FreeStoryContentsAccessCondition",
+              "disableCM": true
+            }
+          },
+          "previousStoryInfo": null,
+          "generalUpcoming": null,
+          "releaseForFree": null
+        },
+        "pageImages": {
+          "secretKey": null,
+          "pageImageBaseURL": "https://d1bzi54d5ruxfk.cloudfront.net/story_279dabe0-3322-11e9-994b-06e4e79605e7_pages_1655967978000_orig/",
+          "pageImageSign": "Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vZDFiemk1NGQ1cnV4ZmsuY2xvdWRmcm9udC5uZXQvc3RvcnlfMjc5ZGFiZTAtMzMyMi0xMWU5LTk5NGItMDZlNGU3OTYwNWU3X3BhZ2VzXzE2NTU5Njc5NzgwMDBfb3JpZy8qIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzE0NDE0Mzg0fSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=nKRM-dwyxyIIHgk1dMHuDwudIT9xcWEkJ8ElD9H5e69wD6oP2hVQrQrpDINhgnSFA4OijZO2rG0fr0AR2IzIjWmHpNCq0E3Kqgc16msWUjVlx61Nw~zj32c2ELAQJdF36mrKAFSXn0t6LSAhwxm9AlR-3zZquhcbvLDD~hxxtmEiuuHBFgv91hYgByZ2mXenO5PGb1t2X4WVUMbkT3rBZtK9nInc7Q7geOsA1k8Et7hkuBUGK121JrrBGsmqy~pq77qcMU-mJuVcLKUho8HYi6UiKUfCWZJMwajCis71WQ3I8gMdugmqcr~MVRmiMHvd3AqFKLza2y1CEeHQ4wZDnQ__&Key-Pair-Id=K3U7ERFV8HLPNG",
+          "pageCount": 29
+        },
+        "storyEndImage": {
+          "__typename": "StoryEndImage",
+          "imageURL": "https://d1bzi54d5ruxfk.cloudfront.net/images/6e509560-e4c1-11ee-a4e4-ca7c6010b87b.jpg?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vZDFiemk1NGQ1cnV4ZmsuY2xvdWRmcm9udC5uZXQvaW1hZ2VzLzZlNTA5NTYwLWU0YzEtMTFlZS1hNGU0LWNhN2M2MDEwYjg3Yi5qcGcqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzE0NDEzNzU4fSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=xuPaNHoFXhIV-w4XJIwaRaZZ1P95UNsdFW2e4Ip~XtQXDyWcY9RPZBKGRnfbSFA-Mv~cPLe4-AT-ie4TZ8MB4walJT1iVhZ1wI~cnyf-NuIyyFII1N53zzd~EbFW9kGfOecpIOo6wL8mzazjdeex2VAacA7aEM-ZbsIoFoBCOYPWIwU7bBnLiNoXKCEPLqiyh5dYj7Pg4R2ZZX-ovZG6~EwHx-gTohDFlFFo~~Ns9vdmy2HFIGIk~Ytlc4JgKaf1x-Hw0BtJvuSi-z1e~rcT~ZL500Qk~S06FQk~tW6AwjAIRPs2kW8mhtOKQm228uK69srIqeBU-EhOco2s9zf-YQ__&Key-Pair-Id=K3U7ERFV8HLPNG",
+          "transition": {
+            "way": "EXTERNAL",
+            "destinationURL": "https://store.ganma.jp/comics/yamadalv999/"
+          },
+          "measurementComment": "20240321__単行本告知__山田くんとLv999の恋をする9巻__第1話＆最新話"
+        },
+        "storyEndImageOnMagazine": null,
+        "afterword": {
+          "text": "はじめまして。この度連載させて頂くことになりました、ましろと申します。\n『山田くんとLv999の恋をする』の第１話を読んで下さりありがとうございます。\n作者もゲームは大好きですが、\n作中に出てくるようなＭＭＯＲＰＧはもうすっかり卒業してしまったので、\nそのあたりの仕様はほとんど記憶を頼りに描いています。\nかつて体験した面白エピソードなども織り交ぜつつ、楽しいお話に出来たらいいなと思っているので、ぜひ続きも読んでくれると嬉しいです！",
+          "imageURL": "https://d1bzi54d5ruxfk.cloudfront.net/story_afterwordImage/279dabe0-3322-11e9-994b-06e4e79605e7_1655967978000.jpg?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vZDFiemk1NGQ1cnV4ZmsuY2xvdWRmcm9udC5uZXQvc3RvcnlfYWZ0ZXJ3b3JkSW1hZ2UvMjc5ZGFiZTAtMzMyMi0xMWU5LTk5NGItMDZlNGU3OTYwNWU3XzE2NTU5Njc5NzgwMDAuanBnKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcxNDQxMzc5M30sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=FHfU1qFvQWnC7eFv9GPKwE4PHKIAxTqecGVYq-JkeXmRLDwkC8TzzIeIARqYcytMR~DPEzdzPDVr-CZ8TkufF-zRoNdtUfjbTWEnLUu~W80cGNqaqyMi5VjUR9pdRuuRAUiO39RmEnyreOviNoCSA-~AxWecJomzvduzKndjit-QrQdrxhxLZKhm8nel3ARHsZLQpNV8s353ZaKZGXWycChSvp-w0AA5kdc10zCBA~dsE9lHDLQl0hu-gUKP5DMs~eZZKVB0vyvFplvP-cZVR5eUUk~~iAN5O1CJ3YVwTZD9UuwJOmjIywE4Whz93bJvMskTL2rBwT7ZeeeBZs7kGQ__&Key-Pair-Id=K3U7ERFV8HLPNG"
+        },
+        "storyEndAd1": {
+          "advertisementId": "141322"
+        },
+        "storyEndAd2": {
+          "advertisementId": "148456"
+        },
+        "overlayAd": {
+          "advertisementId": "141323"
+        },
+        "exchange": {
+          "coverImageURL": "https://d1bzi54d5ruxfk.cloudfront.net/images_exchange_cover/b71971d0-9c9d-11ed-aff7-5a6f9f87b9b1.jpg?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vZDFiemk1NGQ1cnV4ZmsuY2xvdWRmcm9udC5uZXQvaW1hZ2VzX2V4Y2hhbmdlX2NvdmVyL2I3MTk3MWQwLTljOWQtMTFlZC1hZmY3LTVhNmY5Zjg3YjliMS5qcGcqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzE0NDE1MTE4fSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9fX1dfQ__&Signature=zZiSl4UBaRAyIlrddryTBdTyVw4Ho7bPq1Pr7IS3OzuocpdYvm~p7Ekyg9DbSBwrMT~pHfK8J9sUCI9amvtUG0ghECFKoANN7ZaYPhauSka4IhSHFKkqMRAFOooJ~5ircN5WnbLWD6G1EWKhdZdmxDX4-8RK8W0YodXS0Nj1nVnZRtn7VrDE9Puhmy1TJSF3-5J8-Bz2yIjw1Bz5Qukp5bDdSdHbOkDRW2ZdsKT2spoTo5wRoCY6jeRhq2mIbO~CJ5yyb1Yk0~q9-rubXL8EDoxQDL8Y0XgmQ~-BkwtkouhEJ4uUsk7P-No90228IzWUKRiSJD-jidYyO~-CbdTQLQ__&Key-Pair-Id=K3U7ERFV8HLPNG"
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "message": "Can't build an instance of 'String' from 'null'",
+      "locations": [
+        {
+          "line": 1,
+          "column": 811
+        }
+      ],
+      "path": [
+        "magazine",
+        "storyContents",
+        "pageImages",
+        "secretKey"
+      ]
+    }
+  ]
+}
