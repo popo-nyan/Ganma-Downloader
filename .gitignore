@@ -4,6 +4,7 @@
 
 # User-specific stuff
 otokomae/
+山田くんとLv999の恋をする/
 yamadalv999/
 .idea
 .idea/**/workspace.xml
@@ -80,3 +81,4 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+/山田くんとLv999の恋をする/
