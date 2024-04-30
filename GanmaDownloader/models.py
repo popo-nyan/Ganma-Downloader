@@ -1,4 +1,10 @@
 from dataclasses import dataclass
+from enum import Enum
+
+
+class ApolloOperation(Enum):
+    MagazineStoryReaderQuery = "60dae270d44f863e2f485a7fffe83abb5a1d6e3c4fea394e048524ca81c64ca8"
+    SearchComic = "2fb9fce5650a48d520ff6cbf6bf6d5edd6e5ea6af3a139212d2b13134c2344a4"
 
 
 @dataclass(slots=True)
@@ -103,3 +109,12 @@ class StoryContentBaseModel:
 class MagazineStoryReaderResponseModel:
     magazine_id: str
     story_contents: StoryContentBaseModel | None = None
+
+
+@dataclass(slots=True)
+class SearchComicResponseBaseModel:
+    type_name: str
+    title: str
+    magazine_id: str
+    author_name: str
+    todays_jacket_image_url: str | None = None

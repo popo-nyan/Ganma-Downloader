@@ -9,7 +9,7 @@
 ```bash
 pip install -r requirements.txt
 python main.py
-> Magazine Alias: yamadalv999
+> Enter your search keyword: 山田くんと
 ```
 
 # スクリーンショット
