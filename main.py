@@ -6,27 +6,24 @@ import GanmaDownloader
 async def main() -> None:
     client = GanmaDownloader.Client()
     await client.create_account()
-    magazine_alias = str(input("Magazine Alias: "))
-    magazine = await client.get_magazine_data(magazine_alias)
+    search_keyword = str(input("Enter your search keyword: "))
+    search_data = await client.search_magazine(search_keyword)
+    magazine = await client.get_magazine_data(search_data[0].magazine_id)
     if magazine is not None:
         for magazine in magazine.stories:
-            magazine_data = await client.get_magazine_story_reader(magazine_alias, magazine.storyId)
-            if magazine_data is None:
-                continue
+            magazine_data = await client.get_magazine_story_reader(search_data[0].magazine_id, magazine.storyId)
             for count in range(1, magazine_data.story_contents.page_images.page_count):
-                if magazine_data.story_contents.story_info.subtitle is None:
-                    continue
                 await client.download_story_image(base_url=magazine_data.story_contents.page_images.page_image_base_url,
                                                   image_sign=magazine_data.story_contents.page_images.page_image_sign,
                                                   page_count=count,
-                                                  alias=magazine_alias,
+                                                  alias=search_data[0].title,
                                                   title=magazine_data.story_contents.story_info.title,
                                                   subtitle=magazine_data.story_contents.story_info.subtitle)
                 await asyncio.sleep(1)
             print(f"[INFO] Waiting to avoid overloading the server")
             await asyncio.sleep(5)
     else:
-        print(f"[ERROR] {magazine_alias} does not exist.")
+        print(f"[ERROR] {search_data[0].magazine_id} does not exist.")
 
 
 if __name__ == "__main__":
